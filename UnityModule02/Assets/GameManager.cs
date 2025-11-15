@@ -30,12 +30,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over");
 
         // Stop all spawners
-        EnemySpawner[] spawners = FindObjectsOfType<EnemySpawner>();
+        EnemySpawner[] spawners = FindObjectsByType<EnemySpawner>(FindObjectsSortMode.None);
         foreach (var s in spawners)
             s.enabled = false;
 
         // Destroy all enemies
-        EnemyController[] enemies = FindObjectsOfType<EnemyController>();
+        EnemyController[] enemies = FindObjectsByType<EnemyController>(FindObjectsSortMode.None);
         foreach (var e in enemies)
             Destroy(e.gameObject);
     }

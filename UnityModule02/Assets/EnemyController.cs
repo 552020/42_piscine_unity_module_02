@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public float speed = 0.5f;
+    public float hp = 3f;  // Each enemy has 3 HP
     private float bottomBoundary;
 
     void Start()
@@ -46,6 +47,15 @@ public class EnemyController : MonoBehaviour
 
         // Destroy enemy if it leaves the map (goes below bottom boundary)
         if (transform.position.y < bottomBoundary)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
         {
             Destroy(gameObject);
         }
