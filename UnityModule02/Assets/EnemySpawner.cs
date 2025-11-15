@@ -9,6 +9,10 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
+        // Don't spawn if game is over
+        if (GameManager.Instance != null && GameManager.Instance.gameOver)
+            return;
+
         timer += Time.deltaTime;
 
         if (timer >= spawnInterval)
